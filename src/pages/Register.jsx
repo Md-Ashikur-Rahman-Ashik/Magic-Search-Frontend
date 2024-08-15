@@ -14,6 +14,9 @@ const Register = () => {
     googleUser,
   } = useContext(AuthContext);
   const navigate = useNavigate();
+  if (user) {
+    navigate("/");
+  }
 
   const {
     register,

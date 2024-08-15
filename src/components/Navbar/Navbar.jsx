@@ -116,7 +116,7 @@ const Navbar = () => {
                   className="flex bg-[#007bff] p-2 rounded-xl btn-ghost font-bold"
                   onClick={handleSignOut}
                 >
-                  LogOut
+                  Log Out
                 </Link>
               </li>
             </div>
