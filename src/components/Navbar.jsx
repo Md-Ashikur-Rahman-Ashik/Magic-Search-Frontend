@@ -20,13 +20,13 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to={"/"} className={"font-bold"}>
+        <NavLink to={"/"} className={"font-bold bg-[#007BFF]"}>
           Home
         </NavLink>
       </li>
       {!user && (
         <li>
-          <NavLink className="font-bold" to="/login">
+          <NavLink className="font-bold bg-[#007BFF]" to="/login">
             Login
           </NavLink>
         </li>
@@ -46,7 +46,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#0D0D0D] text-white">
+    <div className="bg-[#0D0D0D]">
       <div className="navbar  container p-2 mx-auto">
         <div className="navbar-start">
           <div className="dropdown z-50">
@@ -68,7 +68,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm text-white dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLinks}
             </ul>
@@ -80,14 +80,19 @@ const Navbar = () => {
                 src="/logo.png"
                 alt="Website logo"
               />
-              <Link to={"/"} className="btn text-white btn-ghost text-xl font-bold">
+              <Link
+                to={"/"}
+                className="btn text-white btn-ghost text-xl font-bold"
+              >
                 Magic Search
               </Link>
             </div>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          <ul className="menu text-white menu-horizontal px-1">
+            {navLinks}
+          </ul>
         </div>
         <div className="navbar-end dropdown flex justify-end md:justify-normal">
           {user && (
