@@ -79,14 +79,14 @@ const Login = () => {
   };
 
   return (
-    <div className="container p-6 mx-auto max-w-md rounded-md shadow sm:p-8 bg-green-50 text-green-900">
+    <div className="container mt-10 p-6 mx-auto max-w-md rounded-md shadow sm:p-8 bg-[#007bff] text-white">
       <h2 className="mb-3 text-3xl font-semibold text-center">
         Login to your account
       </h2>
-      <p className="text-center text-black">
+      <p className="text-center text-white">
         {"Don't have account?"}
         <Link to={"/register"} className="focus:underline hover:underline">
-          <span className="text-green-900 font-bold">{" Sign up"}</span>
+          <span className="text-[#F4F4F4] font-bold">{" Sign up"}</span>
         </Link>
       </p>
       <div className="my-6 space-y-4">
@@ -146,7 +146,7 @@ const Login = () => {
         <input
           type="submit"
           value={"Login"}
-          className="w-full px-8 py-3 font-semibold rounded-md bg-green-100 text-green-900 btn"
+          className="w-full px-8 hover:text-black py-3 border-0 font-semibold rounded-md bg-black text-white btn"
         />
       </form>
     </div>
