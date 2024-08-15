@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
+import { AuthContext } from "../../providers/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { signOutUser, user, loading } = useContext(AuthContext);
@@ -19,14 +20,20 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <li>
-        <NavLink to={"/"} className={"font-bold bg-[#007BFF]"}>
+      <li id="homeActive">
+        <NavLink
+          to={"/"}
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
           Home
         </NavLink>
       </li>
       {!user && (
-        <li>
-          <NavLink className="font-bold bg-[#007BFF]" to="/login">
+        <li id="loginActive">
+          <NavLink
+            to="/login"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             Login
           </NavLink>
         </li>
@@ -72,7 +79,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm text-white dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLinks}
             </ul>
@@ -94,7 +101,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu text-white menu-horizontal px-1">{navLinks}</ul>
+          <ul className="menu menu-horizontal text-white font-bold px-1">
+            {navLinks}
+          </ul>
         </div>
         <div className="navbar-end dropdown flex justify-end md:justify-normal">
           {user && (

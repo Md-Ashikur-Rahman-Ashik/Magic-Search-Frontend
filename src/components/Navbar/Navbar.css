@@ -1,0 +1,9 @@
+#homeActive a.active {
+  background-color: #007bff;
+  color: white;
+}
+
+#loginActive a.active {
+  background-color: #007bff;
+  color: white;
+}
