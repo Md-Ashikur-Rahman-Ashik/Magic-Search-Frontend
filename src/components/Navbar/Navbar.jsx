@@ -100,39 +100,25 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal text-white font-bold px-1">
             {navLinks}
           </ul>
         </div>
-        <div className="navbar-end dropdown flex justify-end md:justify-normal">
+        <div className="flex justify-center">
           {user && (
-            <div className="dropdown dropdown-end flex">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img referrerPolicy="no-referrer" alt={user?.displayName} />
-                </div>
-              </div>
-              <ul
-                tabIndex={0}
-                className="mt-3 z-50 p-2 shadow top-10 menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-              >
-                <li className="text-center text-green-900 font-bold">
-                  {user?.displayName}
-                </li>
-                <li className="w-1/2 mx-auto">
-                  <Link
-                    className="flex justify-center btn-ghost font-bold"
-                    onClick={handleSignOut}
-                  >
-                    LogOut
-                  </Link>
-                </li>
-              </ul>
+            <div className="flex gap-4 text-white items-center">
+              <li className="text-center list-none text-white font-bold">
+                {user?.displayName}
+              </li>
+              <li className="w-1/2 flex mx-auto">
+                <Link
+                  className="flex bg-[#007bff] p-2 rounded-xl btn-ghost font-bold"
+                  onClick={handleSignOut}
+                >
+                  LogOut
+                </Link>
+              </li>
             </div>
           )}
         </div>
