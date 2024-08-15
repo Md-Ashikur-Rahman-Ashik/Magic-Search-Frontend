@@ -25,10 +25,17 @@ const Register = () => {
   const onSubmit = async (data) => {
     try {
       const result = await registerUser(data.email, data.password);
-      await updateUserProfile(data.name, data.photo);
-      setUser({ ...user, photoURL: data.photo, displayName: data.name });
-
+      await updateUserProfile(data.name);
+      setUser({ ...user, displayName: data.name });
       setLoading(false);
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User registration Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
 
       // Navigate after registration
       navigate(location.state ? location.state : "/");
