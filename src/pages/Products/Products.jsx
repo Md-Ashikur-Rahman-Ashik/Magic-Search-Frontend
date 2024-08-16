@@ -12,7 +12,6 @@ const Products = () => {
     formState: { errors },
   } = useForm();
   const [search, setSearch] = useState("");
-  const { count } = useLoaderData();
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   // console.log(count);
@@ -20,6 +19,7 @@ const Products = () => {
     setSearch(data.searchText);
     // console.log(data.searchText);
   };
+  const { count } = useLoaderData();
   const {
     data: cars,
     refetch,
@@ -41,13 +41,8 @@ const Products = () => {
   // console.log(cars);
 
   // const itemsPerPage = 10;
-  const numberOfPages = Math.ceil(count / itemsPerPage);
 
-  const pages = [];
-  for (let i = 1; i <= numberOfPages; i++) {
-    pages.push(i);
-  }
-  console.log(pages);
+  // console.log(pages);
 
   // const pages = [...Array(numberOfPages).keys()];
 
@@ -71,6 +66,12 @@ const Products = () => {
     }
   };
 
+  const numberOfPages = Math.ceil(count / itemsPerPage);
+  const pages = [];
+  for (let i = 1; i <= numberOfPages; i++) {
+    pages.push(i);
+  }
+  
   useEffect(() => {
     refetch();
   }, [currentPage, refetch, itemsPerPage, search]);
