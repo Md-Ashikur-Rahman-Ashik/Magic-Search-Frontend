@@ -2,21 +2,30 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ProductCard from "./ProductCard";
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Products = () => {
   const { count } = useLoaderData();
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
   // console.log(count);
-  const carQuery = useQuery({
+  const {
+    data: cars,
+    refetch,
+    isPending: loading,
+  } = useQuery({
     queryKey: ["cars"],
     queryFn: async () => {
-      const response = await axios.get("http://localhost:5000/cars");
+      // refetch();
+      const response = await axios.get(
+        `http://localhost:5000/cars?page=${currentPage}&size=${itemsPerPage}`
+      );
       const data = await response.data;
       return data;
     },
   });
+
+  // console.log(cars);
 
   // const itemsPerPage = 10;
   const numberOfPages = Math.ceil(count / itemsPerPage);
@@ -34,6 +43,7 @@ const Products = () => {
     const val = parseInt(e.target.value);
     setItemsPerPage(val);
     setCurrentPage(0);
+    // refetch();
   };
 
   const handlePrevPage = () => {
@@ -48,13 +58,30 @@ const Products = () => {
     }
   };
 
+  useEffect(() => {
+    refetch();
+  }, [currentPage, refetch]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <span className="loading loading-bars loading-xs"></span>
+        <span className="loading loading-bars loading-sm"></span>
+        <span className="loading loading-bars loading-md"></span>
+        <span className="loading loading-bars loading-lg"></span>
+      </div>
+    );
+  }
+
+  // refetch();
+
   return (
     <div className="container p-6 mx-auto">
       <h2 className="text-5xl text-center font-bold text-[#333333]">
         Explore your car
       </h2>
       <div className="grid grid-cols-1 mt-10 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {carQuery?.data?.map((car) => (
+        {cars?.map((car) => (
           <ProductCard key={car._id} car={car}></ProductCard>
         ))}
       </div>
@@ -72,6 +99,9 @@ const Products = () => {
             }`}
             onClick={() => {
               setCurrentPage(page);
+              refetch();
+              // refetch();
+              // console.log(page);
             }}
             key={page}
           >
