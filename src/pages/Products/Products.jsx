@@ -7,6 +7,7 @@ import { useState } from "react";
 const Products = () => {
   const { count } = useLoaderData();
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(0);
   // console.log(count);
   const carQuery = useQuery({
     queryKey: ["cars"],
@@ -32,6 +33,19 @@ const Products = () => {
     // console.log(e.target.value);
     const val = parseInt(e.target.value);
     setItemsPerPage(val);
+    setCurrentPage(0);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   return (
@@ -45,14 +59,38 @@ const Products = () => {
         ))}
       </div>
       <div className="mt-16 flex justify-center items-center gap-4">
+        <button
+          onClick={handlePrevPage}
+          className="btn text-2xl bg-black text-white hover:text-black font-bold"
+        >
+          Previous
+        </button>
         {pages.map((page) => (
-          <button className="btn text-3xl font-bold" key={page}>
+          <button
+            className={`btn text-2xl bg-black text-white hover:text-black font-bold ${
+              currentPage === page && "bg-blue-500"
+            }`}
+            onClick={() => {
+              setCurrentPage(page);
+            }}
+            key={page}
+          >
             {page}
           </button>
         ))}
+        <button
+          onClick={handleNextPage}
+          className="btn text-2xl bg-black text-white hover:text-black font-bold"
+        >
+          Next
+        </button>
         <div className="flex gap-4 border-2 p-2 rounded-xl">
-          <span className="font-bold">Items Per Page</span>
-          <select onChange={handleItemsPerPage} value={itemsPerPage}>
+          <span className="font-bold text-2xl">Items Per Page :</span>
+          <select
+            className="font-bold text-2xl"
+            onChange={handleItemsPerPage}
+            value={itemsPerPage}
+          >
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
