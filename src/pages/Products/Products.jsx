@@ -73,7 +73,7 @@ const Products = () => {
 
   useEffect(() => {
     refetch();
-  }, [currentPage, refetch, itemsPerPage]);
+  }, [currentPage, refetch, itemsPerPage, search]);
 
   if (loading) {
     return (
