@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
     <div className="container mt-10 mx-auto">
@@ -14,6 +16,9 @@ const Home = () => {
           <p className="w-full text-xl text-center">
             {"Explore the magic of search and become a car enthusiast."}
           </p>
+          <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
+            <Link to={"/products"}>Explore Products</Link>
+          </button>
         </div>
       </div>
     </div>

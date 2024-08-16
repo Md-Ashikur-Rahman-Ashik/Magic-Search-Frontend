@@ -18,6 +18,17 @@ const Navbar = () => {
     );
   }
 
+  const handleSignOut = () => {
+    signOutUser();
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "User logout successful",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+
   const navLinks = (
     <>
       <li id="homeActive">
@@ -46,25 +57,29 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
+      {user && (
+        <ul className="lg:flex lg:justify-center lg:items-center lg:gap-2 lg:text-white">
+          <li className="lg:text-center list-none lg:text-white font-bold">
+            <span>{user?.displayName}</span>
+          </li>
+          <li>
+            <Link
+              className="lg:flex bg-[#007bff] lg:justify-center rounded-xl btn-ghost font-bold text-white"
+              onClick={handleSignOut}
+            >
+              Log Out
+            </Link>
+          </li>
+        </ul>
+      )}
     </>
   );
-
-  const handleSignOut = () => {
-    signOutUser();
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "User logout successful",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  };
 
   return (
     <div className="bg-[#0D0D0D]">
       <div className="navbar  container p-2 mx-auto">
         <div className="navbar-start">
-          <div className="dropdown z-50">
+          <div className="dropdown z-10">
             <div
               tabIndex={0}
               role="button"
@@ -112,23 +127,6 @@ const Navbar = () => {
           <ul className="menu menu-horizontal text-white font-bold px-1">
             {navLinks}
           </ul>
-        </div>
-        <div className="flex justify-center">
-          {user && (
-            <div className="flex gap-4 text-white items-center">
-              <li className="text-center list-none text-white font-bold">
-                {user?.displayName}
-              </li>
-              <li className="w-1/2 flex mx-auto">
-                <Link
-                  className="flex bg-[#007bff] p-2 rounded-xl btn-ghost font-bold"
-                  onClick={handleSignOut}
-                >
-                  Log Out
-                </Link>
-              </li>
-            </div>
-          )}
         </div>
       </div>
     </div>
