@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const Products = () => {
   const { count } = useLoaderData();
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   // console.log(count);
   const {
     data: cars,
@@ -18,7 +18,9 @@ const Products = () => {
     queryFn: async () => {
       // refetch();
       const response = await axios.get(
-        `http://localhost:5000/cars?page=${currentPage}&size=${itemsPerPage}`
+        `http://localhost:5000/cars?page=${
+          currentPage - 1
+        }&size=${itemsPerPage}`
       );
       const data = await response.data;
       return data;
@@ -30,37 +32,37 @@ const Products = () => {
   // const itemsPerPage = 10;
   const numberOfPages = Math.ceil(count / itemsPerPage);
 
-  // const pages = [];
-  // for (let i = 0; i < numberOfPages; i++) {
-  //   pages.push(i);
-  // }
-  // console.log(pages);
+  const pages = [];
+  for (let i = 1; i <= numberOfPages; i++) {
+    pages.push(i);
+  }
+  console.log(pages);
 
-  const pages = [...Array(numberOfPages).keys()];
+  // const pages = [...Array(numberOfPages).keys()];
 
   const handleItemsPerPage = (e) => {
     // console.log(e.target.value);
     const val = parseInt(e.target.value);
     setItemsPerPage(val);
-    setCurrentPage(0);
+    setCurrentPage(1);
     // refetch();
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 0) {
+    if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
-    if (currentPage < pages.length - 1) {
+    if (currentPage < pages.length) {
       setCurrentPage(currentPage + 1);
     }
   };
 
   useEffect(() => {
     refetch();
-  }, [currentPage, refetch]);
+  }, [currentPage, refetch, itemsPerPage]);
 
   if (loading) {
     return (
