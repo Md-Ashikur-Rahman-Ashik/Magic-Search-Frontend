@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="w-full lg:w-1/2">
             <div className="px-6">
               <Link to={"/"} className="font-bold text-xl text-white">
-                CampMed
+                Magic Search
               </Link>
 
               <p className="max-w-sm mt-2 text-white">
