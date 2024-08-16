@@ -1,9 +1,6 @@
-#homeActive a.active {
-  background-color: #007bff;
-  color: white;
-}
-
-#loginActive a.active {
+#homeActive a.active,
+#loginActive a.active,
+#productActive a.active {
   background-color: #007bff;
   color: white;
 }
