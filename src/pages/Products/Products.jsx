@@ -18,8 +18,10 @@ const Products = () => {
   const onSubmit = (data) => {
     setSearch(data.searchText);
     // console.log(data.searchText);
+    setCurrentPage(1);
   };
   const { count } = useLoaderData();
+
   const {
     data: cars,
     refetch,
@@ -65,16 +67,18 @@ const Products = () => {
       setCurrentPage(currentPage + 1);
     }
   };
-
   const numberOfPages = Math.ceil(count / itemsPerPage);
+
   const pages = [];
   for (let i = 1; i <= numberOfPages; i++) {
     pages.push(i);
   }
-  
+
   useEffect(() => {
     refetch();
   }, [currentPage, refetch, itemsPerPage, search]);
+
+  // console.log("Revised the site");
 
   if (loading) {
     return (
