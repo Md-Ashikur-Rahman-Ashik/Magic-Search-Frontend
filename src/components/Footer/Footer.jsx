@@ -7,13 +7,18 @@ const Footer = () => {
         <div className="lg:flex justify-center items-center">
           <div className="w-full lg:w-1/2">
             <div className="px-6">
-              <Link to={"/"} className="font-bold text-xl text-white">
+              <Link
+                to={"/"}
+                className="font-bold text-xl md:flex md:justify-center lg:block text-white"
+              >
                 Magic Search
               </Link>
 
-              <p className="max-w-sm mt-2 text-white">
-                Be a part of car enthusiast community.
-              </p>
+              <div className="md:flex md:justify-center lg:block">
+                <p className="max-w-sm mt-2 text-white">
+                  Be a part of car enthusiast community.
+                </p>
+              </div>
 
               <div className="flex mt-6 justify-center lg:justify-normal">
                 <Link
@@ -65,7 +70,7 @@ const Footer = () => {
           </div>
 
           <div className="mt-6 px-6 lg:mt-0 lg:w-1/2">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 text-center md:text-left">
+            <div className="grid grid-cols-1 gap-6 text-center">
               <div>
                 <h3 className="text-white uppercase dark:text-white">
                   Contact
