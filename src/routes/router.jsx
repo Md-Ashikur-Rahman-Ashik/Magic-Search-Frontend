@@ -30,6 +30,7 @@ const router = createBrowserRouter([
             <Products></Products>
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/carsCount"),
       },
     ],
   },
