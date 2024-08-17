@@ -76,13 +76,13 @@ npm install
 
 
 Run the backend server:
-
-
 npm start
-Frontend
+
 Clone the frontend repository:
 
-git clone [<frontend-repo-link>](https://github.com/Md-Ashikur-Rahman-Ashik/Magic-Search-Frontend)
+
+git clone https://github.com/Md-Ashikur-Rahman-Ashik/Magic-Search-Frontend
+
 Navigate to the project directory:
 
 
