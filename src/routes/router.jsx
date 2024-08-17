@@ -30,7 +30,8 @@ const router = createBrowserRouter([
             <Products></Products>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/carsCount"),
+        loader: () =>
+          fetch("https://magic-search-backend.vercel.app/carsCount"),
       },
     ],
   },
