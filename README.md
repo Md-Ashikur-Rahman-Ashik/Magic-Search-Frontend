@@ -69,13 +69,14 @@ This project is a full-stack SPA that allows users to view a list of products wi
 1. **Clone the backend repository**:
    ```bash
    git clone https://github.com/Md-Ashikur-Rahman-Ashik/Magic-Search-Backend
-   Navigate to the project directory:
-   ```
+Navigate to the project directory:
 
 Install dependencies:
 npm install
 
+
 Run the backend server:
+
 
 npm start
 Frontend
@@ -84,9 +85,12 @@ Clone the frontend repository:
 git clone [<frontend-repo-link>](https://github.com/Md-Ashikur-Rahman-Ashik/Magic-Search-Frontend)
 Navigate to the project directory:
 
+
 Install dependencies:
 
+
 npm install
+
 
 Run the frontend server:
 npm start
