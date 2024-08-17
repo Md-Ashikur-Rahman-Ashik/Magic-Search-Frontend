@@ -12,6 +12,7 @@ const Products = () => {
     formState: { errors },
   } = useForm();
   const [asc, setAsc] = useState(true);
+  const [newest, setNewest] = useState(false);
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,7 +35,9 @@ const Products = () => {
       const response = await axios.get(
         `http://localhost:5000/cars?page=${
           currentPage - 1
-        }&size=${itemsPerPage}&search=${search}&sort=${asc ? "asc" : "desc"}`
+        }&size=${itemsPerPage}&search=${search}&sort=${
+          asc ? "asc" : "desc"
+        }&newest=${newest ? "newest" : "oldest"}`
       );
       const data = await response.data;
       return data;
@@ -77,7 +80,7 @@ const Products = () => {
 
   useEffect(() => {
     refetch();
-  }, [currentPage, refetch, itemsPerPage, search, asc]);
+  }, [currentPage, refetch, itemsPerPage, search, asc, newest]);
 
   // console.log("Revised the site");
 
@@ -115,13 +118,24 @@ const Products = () => {
         </form>
       </div>
       <div className="flex justify-center mt-4 gap-4 items-center">
-        <p className="font-bold">Filter Price :</p>
-        <button
-          onClick={() => setAsc(!asc)}
-          className="btn font-bold bg-black text-white hover:text-black"
-        >
-          {asc ? "High to Low" : "Low to High"}
-        </button>
+        <div className="flex justify-center gap-4 items-center">
+          <p className="font-bold">Filter Price :</p>
+          <button
+            onClick={() => setAsc(!asc)}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            {asc ? "High to Low" : "Low to High"}
+          </button>
+        </div>
+        <div className="flex justify-center gap-4 items-center">
+          <p className="font-bold">Filter Date :</p>
+          <button
+            onClick={() => setNewest(!newest)}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            {newest ? "Oldest first" : "Newest first"}
+          </button>
+        </div>
       </div>
       <div className="grid grid-cols-1 mt-10 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {cars?.map((car) => (
