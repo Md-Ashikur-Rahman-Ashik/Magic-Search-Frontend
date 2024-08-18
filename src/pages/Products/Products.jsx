@@ -38,7 +38,7 @@ const Products = () => {
       const response = await axios.get(
         `http://localhost:5000/cars?page=${
           currentPage - 1
-        }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}&brand=${brandName}&category=${category}`
+        }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}&brand=${brandName}&category=${category}&price=${price}`
       );
       const data = await response.data;
       return data;
