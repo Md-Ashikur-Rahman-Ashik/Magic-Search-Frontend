@@ -16,6 +16,7 @@ const Products = () => {
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [brandName, setBrandName] = useState("");
+  const [category, setCategory] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   // console.log(count);
   const onSubmit = (data) => {
@@ -63,6 +64,11 @@ const Products = () => {
     // console.log(e.target.value);
     const val = e.target.value;
     setBrandName(val);
+  };
+
+  const handleCategory = (e) => {
+    const val = e.target.value;
+    setCategory(val);
   };
 
   const handlePrevPage = () => {
@@ -217,27 +223,21 @@ const Products = () => {
           </div>
         </div>
         <div className="flex justify-center gap-4 items-center">
-          <p className="font-bold">Filter Date :</p>
-          <button
-            onClick={() => {
-              setAsc("");
-              setNewest("newest");
-            }}
-            className="btn font-bold bg-black text-white hover:text-black"
-          >
-            Newest first
-          </button>
-        </div>
-        <div className="flex justify-center gap-4 items-center">
-          <button
-            onClick={() => {
-              setAsc("");
-              setNewest("oldest");
-            }}
-            className="btn font-bold bg-black text-white hover:text-black"
-          >
-            Oldest first
-          </button>
+          <p className="font-bold">Filter Category :</p>
+          <div className="border-2 p-2 rounded-xl">
+            <select
+              className="font-bold"
+              onChange={handleCategory}
+              value={category}
+            >
+              <option value="Electric">Electric</option>
+              <option value="Sports">Sports</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV</option>
+              <option value="Compact">Compact</option>
+              <option value="Hatchback">Hatchback</option>
+            </select>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 mt-10 gap-5 md:grid-cols-2 lg:grid-cols-3">
