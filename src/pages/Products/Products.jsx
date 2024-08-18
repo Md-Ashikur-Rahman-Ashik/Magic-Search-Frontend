@@ -11,8 +11,8 @@ const Products = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [asc, setAsc] = useState(true);
-  const [newest, setNewest] = useState(false);
+  const [asc, setAsc] = useState("");
+  const [newest, setNewest] = useState("");
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,11 +33,9 @@ const Products = () => {
     queryFn: async () => {
       // refetch();
       const response = await axios.get(
-        `https://magic-search-backend.vercel.app/cars?page=${
+        `http://localhost:5000/cars?page=${
           currentPage - 1
-        }&size=${itemsPerPage}&search=${search}&sort=${
-          asc ? "asc" : "desc"
-        }&newest=${newest ? "newest" : "oldest"}`
+        }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}`
       );
       const data = await response.data;
       return data;
@@ -121,19 +119,47 @@ const Products = () => {
         <div className="flex justify-center gap-4 items-center">
           <p className="font-bold">Filter Price :</p>
           <button
-            onClick={() => setAsc(!asc)}
+            onClick={() => {
+              setNewest("");
+              setAsc("asc");
+            }}
             className="btn font-bold bg-black text-white hover:text-black"
           >
-            {asc ? "High to Low" : "Low to High"}
+            Low to High
+          </button>
+        </div>
+        <div className="flex justify-center gap-4 items-center">
+          <button
+            onClick={() => {
+              setNewest("");
+              setAsc("desc");
+            }}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            High to Low
           </button>
         </div>
         <div className="flex justify-center gap-4 items-center">
           <p className="font-bold">Filter Date :</p>
           <button
-            onClick={() => setNewest(!newest)}
+            onClick={() => {
+              setAsc("");
+              setNewest("newest");
+            }}
             className="btn font-bold bg-black text-white hover:text-black"
           >
-            {newest ? "Oldest first" : "Newest first"}
+            Newest first
+          </button>
+        </div>
+        <div className="flex justify-center gap-4 items-center">
+          <button
+            onClick={() => {
+              setAsc("");
+              setNewest("oldest");
+            }}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            Oldest first
           </button>
         </div>
       </div>
