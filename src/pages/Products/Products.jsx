@@ -17,6 +17,7 @@ const Products = () => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [brandName, setBrandName] = useState("");
   const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   // console.log(count);
   const onSubmit = (data) => {
@@ -69,6 +70,11 @@ const Products = () => {
   const handleCategory = (e) => {
     const val = e.target.value;
     setCategory(val);
+  };
+
+  const handlePrice = (e) => {
+    const val = e.target.value;
+    setPrice(val);
   };
 
   const handlePrevPage = () => {
@@ -247,6 +253,20 @@ const Products = () => {
               <option value="SUV">SUV</option>
               <option value="Compact">Compact</option>
               <option value="Hatchback">Hatchback</option>
+            </select>
+          </div>
+        </div>
+        <div className="flex justify-center gap-4 items-center">
+          <p className="font-bold">Price Range :</p>
+          <div className="border-2 p-2 rounded-xl">
+            <select className="font-bold" onChange={handlePrice} value={price}>
+              <option value="">Choose Price Range</option>
+              <option value="first">$20,000 - $50,000</option>
+              <option value="second">$50,000 - $100,000</option>
+              <option value="third">$100,000 - $200,000</option>
+              <option value="fourth">$200,000 - $500,000</option>
+              <option value="fifth">$500,000 - $1,000,000</option>
+              <option value="sixth">$1,000,000 - $3,500,000</option>
             </select>
           </div>
         </div>
