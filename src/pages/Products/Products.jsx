@@ -145,7 +145,7 @@ const Products = () => {
           />
         </form>
       </div>
-      <div className="flex justify-center mt-4 gap-4 items-center">
+      <div className="flex md:flex-row flex-col justify-center mt-4 md:gap-4 items-center">
         <div className="flex justify-center gap-4 items-center">
           <p className="font-bold">Filter Price :</p>
           <button
@@ -294,7 +294,7 @@ const Products = () => {
           <ProductCard key={car._id} car={car}></ProductCard>
         ))}
       </div>
-      <div className="mt-16 grid lg:grid-cols-8 md:grid-cols-6 justify-center items-center gap-4">
+      <div className="mt-16 grid grid-cols-3 lg:grid-cols-8 md:grid-cols-6 justify-center items-center gap-4">
         <button
           onClick={handlePrevPage}
           className="btn text-2xl bg-black text-white hover:text-black font-bold"
@@ -323,7 +323,7 @@ const Products = () => {
         >
           Next
         </button>
-        <div className="flex gap-4 md:gap-0 lg:col-span-2 border-2 md:col-span-6 justify-center p-2 rounded-xl">
+        <div className="flex gap-4 col-span-3 md:gap-0 lg:col-span-2 border-2 md:col-span-6 justify-center p-2 rounded-xl">
           <span className="font-bold text-2xl">Items Per Page :</span>
           <select
             className="font-bold text-2xl"
