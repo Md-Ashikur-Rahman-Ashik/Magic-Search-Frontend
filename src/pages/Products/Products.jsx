@@ -193,7 +193,7 @@ const Products = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-center mt-4 gap-4 items-center">
+      <div className="grid grid-cols-3 mt-4 gap-4 items-center">
         <div className="flex justify-center gap-4 items-center">
           <p className="font-bold">Filter Brand :</p>
           <div className="border-2 p-2 rounded-xl">
@@ -272,22 +272,22 @@ const Products = () => {
             </select>
           </div>
         </div>
-      </div>
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={() => {
-            setSearch("");
-            setAsc("");
-            setNewest("");
-            setBrandName("");
-            setCategory("");
-            setPrice("");
-            reset();
-          }}
-          className="btn font-bold bg-black text-white hover:text-black"
-        >
-          Clear all filters
-        </button>
+        <div className="col-span-3 flex justify-center">
+          <button
+            onClick={() => {
+              setSearch("");
+              setAsc("");
+              setNewest("");
+              setBrandName("");
+              setCategory("");
+              setPrice("");
+              reset();
+            }}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            Clear all filters
+          </button>
+        </div>
       </div>
       <div className="grid grid-cols-1 mt-10 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {cars?.map((car) => (
