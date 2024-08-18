@@ -106,6 +106,7 @@ const Products = () => {
     newest,
     brandName,
     category,
+    price,
   ]);
 
   // console.log("Revised the site");
