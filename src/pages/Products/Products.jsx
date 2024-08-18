@@ -146,7 +146,7 @@ const Products = () => {
         </form>
       </div>
       <div className="flex md:flex-row flex-col justify-center mt-4 md:gap-4 items-center">
-        <div className="flex justify-center gap-4 items-center">
+        <div className="flex justify-center md:gap-4 gap-2 items-center">
           <p className="font-bold">Filter Price :</p>
           <button
             onClick={() => {
@@ -157,19 +157,19 @@ const Products = () => {
           >
             Low to High
           </button>
+          <div>
+            <button
+              onClick={() => {
+                setNewest("");
+                setAsc("desc");
+              }}
+              className="btn font-bold bg-black text-white hover:text-black"
+            >
+              High to Low
+            </button>
+          </div>
         </div>
-        <div className="flex justify-center gap-4 items-center">
-          <button
-            onClick={() => {
-              setNewest("");
-              setAsc("desc");
-            }}
-            className="btn font-bold bg-black text-white hover:text-black"
-          >
-            High to Low
-          </button>
-        </div>
-        <div className="flex justify-center gap-4 items-center">
+        <div className="flex justify-center mt-2 md:mt-0 gap-4 items-center">
           <p className="font-bold">Filter Date :</p>
           <button
             onClick={() => {
@@ -180,17 +180,17 @@ const Products = () => {
           >
             Newest first
           </button>
-        </div>
-        <div className="flex justify-center gap-4 items-center">
-          <button
-            onClick={() => {
-              setAsc("");
-              setNewest("oldest");
-            }}
-            className="btn font-bold bg-black text-white hover:text-black"
-          >
-            Oldest first
-          </button>
+          <div>
+            <button
+              onClick={() => {
+                setAsc("");
+                setNewest("oldest");
+              }}
+              className="btn font-bold bg-black text-white hover:text-black"
+            >
+              Oldest first
+            </button>
+          </div>
         </div>
       </div>
       <div className="grid justify-center lg:grid-cols-3 md:grid-cols-2 mt-4 gap-4 items-center">
@@ -272,7 +272,7 @@ const Products = () => {
             </select>
           </div>
         </div>
-        <div className="lg:col-span-3 flex lg:justify-center">
+        <div className="lg:col-span-3 flex justify-end lg:justify-center">
           <button
             onClick={() => {
               setSearch("");
