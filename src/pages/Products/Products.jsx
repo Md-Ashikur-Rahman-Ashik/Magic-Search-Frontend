@@ -37,7 +37,7 @@ const Products = () => {
     queryFn: async () => {
       // refetch();
       const response = await axios.get(
-        `http://localhost:5000/cars?page=${
+        `https://magic-search-backend.vercel.app/cars?page=${
           currentPage - 1
         }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}&brand=${brandName}&category=${category}&price=${price}`
       );
