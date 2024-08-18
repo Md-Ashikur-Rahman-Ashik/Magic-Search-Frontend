@@ -15,6 +15,7 @@ const Products = () => {
   const [newest, setNewest] = useState("");
   const [search, setSearch] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [brandName, setBrandName] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   // console.log(count);
   const onSubmit = (data) => {
@@ -35,7 +36,7 @@ const Products = () => {
       const response = await axios.get(
         `http://localhost:5000/cars?page=${
           currentPage - 1
-        }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}`
+        }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}&brand=${brandName}`
       );
       const data = await response.data;
       return data;
@@ -58,6 +59,12 @@ const Products = () => {
     // refetch();
   };
 
+  const handleBrandName = (e) => {
+    // console.log(e.target.value);
+    const val = e.target.value;
+    setBrandName(val);
+  };
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -78,7 +85,7 @@ const Products = () => {
 
   useEffect(() => {
     refetch();
-  }, [currentPage, refetch, itemsPerPage, search, asc, newest]);
+  }, [currentPage, refetch, itemsPerPage, search, asc, newest, brandName]);
 
   // console.log("Revised the site");
 
@@ -138,6 +145,76 @@ const Products = () => {
           >
             High to Low
           </button>
+        </div>
+        <div className="flex justify-center gap-4 items-center">
+          <p className="font-bold">Filter Date :</p>
+          <button
+            onClick={() => {
+              setAsc("");
+              setNewest("newest");
+            }}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            Newest first
+          </button>
+        </div>
+        <div className="flex justify-center gap-4 items-center">
+          <button
+            onClick={() => {
+              setAsc("");
+              setNewest("oldest");
+            }}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            Oldest first
+          </button>
+        </div>
+      </div>
+      <div className="flex justify-center mt-4 gap-4 items-center">
+        <div className="flex justify-center gap-4 items-center">
+          <p className="font-bold">Filter Brand :</p>
+          <div className="border-2 p-2 rounded-xl">
+            <select
+              className="font-bold"
+              onChange={handleBrandName}
+              value={brandName}
+            >
+              <option value="Tesla">Tesla</option>
+              <option value="Ford">Ford</option>
+              <option value="BMW">BMW</option>
+              <option value="Audi">Audi</option>
+              <option value="Chevrolet">Chevrolet</option>
+              <option value="Honda">Honda</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Jeep">Jeep</option>
+              <option value="Nissan">Nissan</option>
+              <option value="Subaru">Subaru</option>
+              <option value="Volkswagen">Volkswagen</option>
+              <option value="Porsche">Porsche</option>
+              <option value="Lexus">Lexus</option>
+              <option value="Hyundai">Hyundai</option>
+              <option value="Mazda">Mazda</option>
+              <option value="Kia">Kia</option>
+              <option value="Alfa Romeo">Alfa Romeo</option>
+              <option value="Volvo">Volvo</option>
+              <option value="Cadillac">Cadillac</option>
+              <option value="Ferrari">Ferrari</option>
+              <option value="Acura">Acura</option>
+              <option value="Jaguar">Jaguar</option>
+              <option value="Maserati">Maserati</option>
+              <option value="Bentley">Bentley</option>
+              <option value="Aston Martin">Aston Martin</option>
+              <option value="Rolls-Royce">Rolls-Royce</option>
+              <option value="Lamborghini">Lamborghini</option>
+              <option value="McLaren">McLaren</option>
+              <option value="Bugatti">Bugatti</option>
+              <option value="Pagani">Pagani</option>
+              <option value="Koenigsegg">Koenigsegg</option>
+              <option value="Rimac">Rimac</option>
+              <option value="Lucid">Lucid</option>
+            </select>
+          </div>
         </div>
         <div className="flex justify-center gap-4 items-center">
           <p className="font-bold">Filter Date :</p>
