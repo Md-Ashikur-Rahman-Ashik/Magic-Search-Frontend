@@ -266,8 +266,7 @@ const Products = () => {
               <option value="first">$20,000 - $50,000</option>
               <option value="second">$50,000 - $100,000</option>
               <option value="third">$100,000 - $200,000</option>
-              <option value="fourth">$200,000 - $500,000</option>
-              <option value="fifth">$500,000 - $1,000,000</option>
+              <option value="fourth">$200,000 - $1,000,000</option>
               <option value="sixth">$1,000,000 - $3,500,000</option>
             </select>
           </div>
@@ -289,6 +288,11 @@ const Products = () => {
           </button>
         </div>
       </div>
+      {cars.length === 0 && (
+        <h2 className="text-5xl my-52 text-center font-bold text-[#333333]">
+          There is no car to show. Change your filter or remove all filters.
+        </h2>
+      )}
       <div className="grid grid-cols-1 mt-10 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {cars?.map((car) => (
           <ProductCard key={car._id} car={car}></ProductCard>
