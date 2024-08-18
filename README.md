@@ -2,6 +2,10 @@
 
 This project is a full-stack single-page application (SPA) built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to search, filter, sort, and paginate through a list of products. Additionally, the application includes authentication using Firebase.
 
+## Live Site
+
+Visit the live site at [Magic Search](https://magic-search-bd.web.app/)
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -69,28 +73,24 @@ This project is a full-stack SPA that allows users to view a list of products wi
 1. **Clone the backend repository**:
    ```bash
    git clone https://github.com/Md-Ashikur-Rahman-Ashik/Magic-Search-Backend
-Navigate to the project directory:
+   Navigate to the project directory:
+   ```
 
 Install dependencies:
 npm install
-
 
 Run the backend server:
 npm start
 
 Clone the frontend repository:
 
-
 git clone https://github.com/Md-Ashikur-Rahman-Ashik/Magic-Search-Frontend
 
 Navigate to the project directory:
 
-
 Install dependencies:
 
-
 npm install
-
 
 Run the frontend server:
 npm start
