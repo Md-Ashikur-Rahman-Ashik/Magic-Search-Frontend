@@ -9,6 +9,7 @@ const Products = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const [asc, setAsc] = useState("");
@@ -270,6 +271,22 @@ const Products = () => {
               <option value="sixth">$1,000,000 - $3,500,000</option>
             </select>
           </div>
+        </div>
+        <div className="flex justify-center">
+          <button
+            onClick={() => {
+              setSearch("");
+              setAsc("");
+              setNewest("");
+              setBrandName("");
+              setCategory("");
+              setPrice("");
+              reset();
+            }}
+            className="btn font-bold bg-black text-white hover:text-black"
+          >
+            Clear all filters
+          </button>
         </div>
       </div>
       <div className="grid grid-cols-1 mt-10 gap-5 md:grid-cols-2 lg:grid-cols-3">
