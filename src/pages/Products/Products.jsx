@@ -37,7 +37,7 @@ const Products = () => {
       const response = await axios.get(
         `http://localhost:5000/cars?page=${
           currentPage - 1
-        }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}&brand=${brandName}`
+        }&size=${itemsPerPage}&search=${search}&sort=${asc}&newest=${newest}&brand=${brandName}&category=${category}`
       );
       const data = await response.data;
       return data;
@@ -91,7 +91,16 @@ const Products = () => {
 
   useEffect(() => {
     refetch();
-  }, [currentPage, refetch, itemsPerPage, search, asc, newest, brandName]);
+  }, [
+    currentPage,
+    refetch,
+    itemsPerPage,
+    search,
+    asc,
+    newest,
+    brandName,
+    category,
+  ]);
 
   // console.log("Revised the site");
 
