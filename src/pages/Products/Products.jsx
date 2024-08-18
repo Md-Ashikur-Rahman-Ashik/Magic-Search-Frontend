@@ -194,6 +194,7 @@ const Products = () => {
               onChange={handleBrandName}
               value={brandName}
             >
+              <option value="">Choose car brand</option>
               <option value="Tesla">Tesla</option>
               <option value="Ford">Ford</option>
               <option value="BMW">BMW</option>
@@ -239,6 +240,7 @@ const Products = () => {
               onChange={handleCategory}
               value={category}
             >
+              <option value="">Choose car category</option>
               <option value="Electric">Electric</option>
               <option value="Sports">Sports</option>
               <option value="Sedan">Sedan</option>
