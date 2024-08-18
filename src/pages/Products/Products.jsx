@@ -193,7 +193,7 @@ const Products = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-3 mt-4 gap-4 items-center">
+      <div className="grid justify-center lg:grid-cols-3 md:grid-cols-2 mt-4 gap-4 items-center">
         <div className="flex justify-center gap-4 items-center">
           <p className="font-bold">Filter Brand :</p>
           <div className="border-2 p-2 rounded-xl">
@@ -272,7 +272,7 @@ const Products = () => {
             </select>
           </div>
         </div>
-        <div className="col-span-3 flex justify-center">
+        <div className="lg:col-span-3 flex lg:justify-center">
           <button
             onClick={() => {
               setSearch("");
@@ -323,8 +323,10 @@ const Products = () => {
         >
           Next
         </button>
-        <div className="flex gap-4 border-2 p-2 rounded-xl">
-          <span className="font-bold text-2xl">Items Per Page :</span>
+        <div className="flex gap-4 md:gap-0 border-2 p-2 rounded-xl">
+          <span className="font-bold text-2xl">
+            Items Per Page :
+          </span>
           <select
             className="font-bold text-2xl"
             onChange={handleItemsPerPage}
